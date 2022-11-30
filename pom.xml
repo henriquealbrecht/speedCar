@@ -27,6 +27,11 @@
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>br.com.speedcar</groupId>
+            <artifactId>crud-speedcar-jdbc</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>SpeedCar</finalName>
