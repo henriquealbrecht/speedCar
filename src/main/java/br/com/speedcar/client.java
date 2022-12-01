@@ -21,7 +21,5 @@ public class client extends HttpServlet {
         writer.println("<h1>Cadastro de clientes da SpeedCar Servlet</h1>");
         writer.println("</body>");
         writer.println("</html>");
-
-        Connection connection = ConnectionFactory.getConnection();
     }
 }
