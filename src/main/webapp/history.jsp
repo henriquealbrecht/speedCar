@@ -1,5 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
-<%@ page import="br.com.speedcar.dao.HistoryDAO, br.com.speedcar.infra.ConnectionFactory, br.com.speedcar.model.History, java.sql.Connection, java.sql.SQLException,  java.util.Optional, java.sql.*, java.lang.Class, java.util.Optional"%>
+<%@ page import="br.com.speedcar.dao.HistoryDAO, br.com.speedcar.infra.ConnectionFactory, br.com.speedcar.model.History, java.sql.Connection, java.sql.SQLException,  java.util.Optional, java.sql.*, java.lang.Class, java.util.Optional, java.util.List"%>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -122,16 +122,16 @@
                 <%
                     Connection connection = ConnectionFactory.getConnection();
                     HistoryDAO dao = new HistoryDAO(connection);
-                    Optional<History> optional = dao.findById(10L);
-                    String customerName = "-";
-                    customerName = optional.get().getCustomerFullName();
+                    List<History> his = dao.findAll(true);
+                    for(History hs : his){
                 %>
                 <tr>
-                    <td><%=optional.get().getCustomerFullName() %></td>
-                    <td><%=optional.get().getEmailAddress()%></td>
-                    <td><%=optional.get().getOccurrence()%></td>
-                    <td><%=optional.get().getPhoneNumber()%></td>
+                    <td><%=hs.getCustomerFullName() %></td>
+                    <td><%=hs.getEmailAddress()%></td>
+                    <td><%=hs.getOccurrence()%></td>
+                    <td><%=hs.getPhoneNumber()%></td>
                 </tr>
+                <%}%>
                 <tr>
                     <td>Henrique Albrecht</td>
                     <td>henrique@gmail.com</td>

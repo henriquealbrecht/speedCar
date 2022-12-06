@@ -37,7 +37,7 @@
         }
 
         if($(input).val() == login && $(input).val() == senha){
-            window.open("http://localhost:8080/speedcar/history.html");
+            window.open("http://localhost:8080/speedcar/history.jsp");
         }
     }
 
