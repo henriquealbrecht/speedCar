@@ -1,3 +1,5 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ page import="br.com.speedcar.dao.HistoryDAO, br.com.speedcar.infra.ConnectionFactory, br.com.speedcar.model.History, java.sql.Connection, java.sql.SQLException,  java.util.Optional, java.sql.*, java.lang.Class, java.util.Optional"%>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -40,6 +42,7 @@
         </div>
     </div>
 </div>
+<!-- Delete Modal HTML -->
 <div id="deleteEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -93,13 +96,15 @@
     <div class="table-responsive">
         <div class="table-wrapper">
             <div class="table-title">
-                <div class="row" style="margin-top: 10px;">
+                <div class="row">
                     <div class="col-sm-6">
                         <h2>SpeedCar <b>Histórico</b></h2>
                     </div>
                     <div class="col-sm-6" style="text-align-last: right;">
                         <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
                                 class="material-icons">&#xE147;</i> <span>Novo Cliente</span></a>
+                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i
+                                class="material-icons">&#xE15C;</i> <span>Excluir</span></a>
                     </div>
                 </div>
             </div>
@@ -114,6 +119,19 @@
                 </tr>
                 </thead>
                 <tbody>
+                <%
+                    Connection connection = ConnectionFactory.getConnection();
+                    HistoryDAO dao = new HistoryDAO(connection);
+                    Optional<History> optional = dao.findById(10L);
+                    String customerName = "-";
+                    customerName = optional.get().getCustomerFullName();
+                %>
+                <tr>
+                    <td><%=optional.get().getCustomerFullName() %></td>
+                    <td><%=optional.get().getEmailAddress()%></td>
+                    <td><%=optional.get().getOccurrence()%></td>
+                    <td><%=optional.get().getPhoneNumber()%></td>
+                </tr>
                 <tr>
                     <td>Henrique Albrecht</td>
                     <td>henrique@gmail.com</td>
