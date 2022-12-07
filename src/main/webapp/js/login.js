@@ -33,7 +33,11 @@
             }
         }
 
+<<<<<<< HEAD
         if($(input).val() == 'acesso@speedcar.com.br' || $(input).val() == 'speedcar'){
+=======
+        if($(input).val() == login && $(input).val() == senha){
+>>>>>>> origin/master
             window.open("http://localhost:8080/speedcar/history.jsp");
         }
     }
