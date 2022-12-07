@@ -1,5 +1,5 @@
 <%@ page pageEncoding="UTF-8" %>
-<%@ page import="br.com.speedcar.dao.HistoryDAO, br.com.speedcar.infra.ConnectionFactory, br.com.speedcar.model.History, java.sql.Connection, java.sql.SQLException,  java.util.Optional, java.sql.*, java.lang.Class, java.util.Optional"%>
+<%@ page import="br.com.speedcar.dao.HistoryDAO, br.com.speedcar.infra.ConnectionFactory, br.com.speedcar.model.History, java.sql.Connection, java.sql.SQLException,  java.util.Optional, java.sql.*, java.lang.Class, java.util.Optional, java.util.List"%>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -100,12 +100,6 @@
                     <div class="col-sm-6">
                         <h2>SpeedCar <b>Histórico</b></h2>
                     </div>
-                    <div class="col-sm-6" style="text-align-last: right;">
-                        <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
-                                class="material-icons">&#xE147;</i> <span>Novo Cliente</span></a>
-                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i
-                                class="material-icons">&#xE15C;</i> <span>Excluir</span></a>
-                    </div>
                 </div>
             </div>
             <table class="table table-striped table-hover">
@@ -122,25 +116,29 @@
                 <%
                     Connection connection = ConnectionFactory.getConnection();
                     HistoryDAO dao = new HistoryDAO(connection);
-                    Optional<History> optional = dao.findById(10L);
-                    String customerName = "-";
-                    customerName = optional.get().getCustomerFullName();
+                    List<History> his = dao.findAll(true);
+                    for(History hs : his){
                 %>
                 <tr>
-                    <td><%=optional.get().getCustomerFullName() %></td>
-                    <td><%=optional.get().getEmailAddress()%></td>
-                    <td><%=optional.get().getOccurrence()%></td>
-                    <td><%=optional.get().getPhoneNumber()%></td>
+                    <td><%=hs.getCustomerFullName() %></td>
+                    <td><%=hs.getEmailAddress()%></td>
+                    <td><%=hs.getOccurrence()%></td>
+                    <td><%=hs.getPhoneNumber()%></td>
+                    <td>
+                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+                            <i
+                                class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;
+                            </i>
+                        </a>
+                    </td>
                 </tr>
+                <%}%>
                 <tr>
                     <td>Henrique Albrecht</td>
                     <td>henrique@gmail.com</td>
                     <td>Sapucaia</td>
                     <td>(51) 98059765</td>
                     <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                                                                         data-toggle="tooltip"
-                                                                                         title="Edit">&#xE254;</i></a>
                         <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
                                                                                              data-toggle="tooltip"
                                                                                              title="Delete">&#xE872;</i></a>
@@ -152,12 +150,10 @@
                     <td>Viamão</td>
                     <td>(51) 98057674</td>
                     <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                                                                         data-toggle="tooltip"
-                                                                                         title="Edit">&#xE254;</i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-                                                                                             data-toggle="tooltip"
-                                                                                             title="Delete">&#xE872;</i></a>
+                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+                            <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;
+                            </i>
+                        </a>
                     </td>
                 </tr>
                 </tbody>
