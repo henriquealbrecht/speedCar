@@ -100,12 +100,6 @@
                     <div class="col-sm-6">
                         <h2>SpeedCar <b>Histórico</b></h2>
                     </div>
-                    <div class="col-sm-6" style="text-align-last: right;">
-                        <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
-                                class="material-icons">&#xE147;</i> <span>Novo Cliente</span></a>
-                        <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i
-                                class="material-icons">&#xE15C;</i> <span>Excluir</span></a>
-                    </div>
                 </div>
             </div>
             <table class="table table-striped table-hover">
@@ -130,6 +124,13 @@
                     <td><%=hs.getEmailAddress()%></td>
                     <td><%=hs.getOccurrence()%></td>
                     <td><%=hs.getPhoneNumber()%></td>
+                    <td>
+                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+                            <i
+                                class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;
+                            </i>
+                        </a>
+                    </td>
                 </tr>
                 <%}%>
                 <tr>
@@ -138,9 +139,6 @@
                     <td>Sapucaia</td>
                     <td>(51) 98059765</td>
                     <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                                                                         data-toggle="tooltip"
-                                                                                         title="Edit">&#xE254;</i></a>
                         <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
                                                                                              data-toggle="tooltip"
                                                                                              title="Delete">&#xE872;</i></a>
@@ -152,12 +150,10 @@
                     <td>Viamão</td>
                     <td>(51) 98057674</td>
                     <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                                                                         data-toggle="tooltip"
-                                                                                         title="Edit">&#xE254;</i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-                                                                                             data-toggle="tooltip"
-                                                                                             title="Delete">&#xE872;</i></a>
+                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+                            <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;
+                            </i>
+                        </a>
                     </td>
                 </tr>
                 </tbody>
