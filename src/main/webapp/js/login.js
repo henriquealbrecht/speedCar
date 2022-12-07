@@ -22,6 +22,9 @@
     });
 
     function validate (input) {
+    var login = 'acesso@speedcar.com.br';
+    var senha = 'speedcar';
+
         if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
             if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
                 return false;
@@ -33,11 +36,7 @@
             }
         }
 
-<<<<<<< HEAD
         if($(input).val() == 'acesso@speedcar.com.br' || $(input).val() == 'speedcar'){
-=======
-        if($(input).val() == login && $(input).val() == senha){
->>>>>>> origin/master
             window.open("http://localhost:8080/speedcar/history.jsp");
         }
     }
